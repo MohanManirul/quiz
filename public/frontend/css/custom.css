@@ -1,0 +1,22 @@
+.form-material .has-error input{
+	background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(rgba(120, 130, 140, 0.13), rgba(249, 17, 17, 0.8)) !important;
+}
+.has-error input, .has-error select, .has-error text-area, .has-error .input-group-addon{
+	border: 1px rgba(249, 17, 17, 0.8) solid;
+}
+.has-error .input-group-addon{
+	color: rgba(249, 17, 17, 0.8);
+}
+.dtable { display: table; width: 100%; }
+.dtable .dcell{ display: table-cell; }
+
+.dtable .mytooltip { z-index: 100 !important; }
+.error-msg { color: #F05383; }
+
+td.details-control {
+    background: url('../images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+tr.details td.details-control {
+    background: url('../images/details_close.png') no-repeat center center;
+}
