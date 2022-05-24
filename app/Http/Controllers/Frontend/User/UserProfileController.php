@@ -23,7 +23,7 @@ class UserProfileController extends Controller
     public function index(){
         if(auth('web')->check()){  
 
-            $all_questions = Question::select('id', 'question', 'option_one' , 'option_two', 'option_three' , 'option_four')->get();
+            $all_questions = Question::select('id',  'option_four')->get();
         
 
             $user_info = User::select('id',  'name',  'email' , 'phone'  ,  'image', 'company_name', 'language',  'address' ,'security' ,  'twitter','facebook','google_plus','linkedin', 'instagram' )->where('is_active',true)->first();
