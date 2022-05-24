@@ -67,3 +67,4 @@
         }
     </script>
     <script src="{{ asset('backend/js/pages/dashboards_index.js') }}"></script>
+    @yield("per_page_js")

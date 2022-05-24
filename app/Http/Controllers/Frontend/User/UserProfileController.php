@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Question;
 use App\Models\UserModule\User;
+use App\Models\UserTest;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +22,12 @@ class UserProfileController extends Controller
     //index  function start
     public function index(){
         if(auth('web')->check()){  
-                     
+
+            $all_questions = Question::select('id', 'question', 'option_one' , 'option_two', 'option_three' , 'option_four')->get();
+        
+
             $user_info = User::select('id',  'name',  'email' , 'phone'  ,  'image', 'company_name', 'language',  'address' ,'security' ,  'twitter','facebook','google_plus','linkedin', 'instagram' )->where('is_active',true)->first();
-            return view('frontend.dashboard' ,  compact('user_info'));
+            return view('frontend.dashboard' ,  compact('user_info', 'all_questions'));
         }else{
             return  view('errors.404');
         }
@@ -30,6 +35,24 @@ class UserProfileController extends Controller
     }
     //index  function ends
    
+    //exam function start
+    public function exam(Request $request){
+        $user_id = Auth()->user()->id;
+        
+        if( $request['question_id'] ){
+            foreach( $request['question_id'] as $key => $question_id ){
+
+                $test = new UserTest();                
+                $test->user_id  = $user_id;
+                $test->question_id = $question_id;
+                $test->answer_id  = $request['answer_id'][$key];
+                $test->save();
+            }
+            return back()->with('success','Exam Submitted Successfully...');
+        }
+
+    }
+    //exam function ends
     //user_profile_view function start
     public  function user_profile_view(){
        

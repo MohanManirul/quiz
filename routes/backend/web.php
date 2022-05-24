@@ -48,7 +48,7 @@ Route::group(['middleware' => 'super_admin'], function () {
      Route::post("/adminadmin/question/edit/{id}",[QuestionController::class,'update'])->name('question.update'); 
 
     //question delete
-     Route::post("/admin/delete/{id}",[QuestionController::class,'delete'])->name('question.delete'); 
+     Route::get("/admin/question/delete/{id}",[QuestionController::class,'delete_question'])->name('question.delete'); 
     
   
 });

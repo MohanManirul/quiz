@@ -46,7 +46,13 @@
         <div class="container-fluid">
 
             <div class="row">
+              
                 <div class="col-md-12">
+                      @if(session()->has('message'))
+                    <div class="alert alert-danger">
+                        {{ session()->get('message') }}
+                    </div>
+                @endif
                     <div class="card card-primary card-outline table-responsive">
                         <div class="card-header text-right">
                             <a  href="{{ route('question.create') }}"
@@ -80,7 +86,8 @@
                                         <td>{{ $all_question->option_four }}</td>
                                         <td>                                            
                                             <a class="btn btn-success text-white" href="{{ route('question.edit', $all_question->id) }}">Edit</a>                                           
-                                            <a class="btn btn-danger text-white" href="{{ route('question.delete', $all_question->id) }}">Delete</a>                                           
+                                            <a class="btn btn-danger text-white" href="{{ route('question.delete', $all_question->id) }}">Delete</a>
+
                                         </td>
                                     </tr>
                                     @endforeach

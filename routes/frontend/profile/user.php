@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' =>  'dashboard' , 'middleware'  => 'web'],  function(){
     Route::get("/"  ,  [UserProfileController::class, "index"])->name('user.dashboard');
+    Route::get("/do-exam"  ,  [UserProfileController::class, "exam"])->name('user.exam');
    // Route::get("/2fa"  ,  [UserProfileController::class, "twoFa"])->name('user.2fa');    
     Route::get("/logout"  ,  [UserProfileController::class, "logout"])->name('user.logout');
     Route::get("/user-profile-view"  ,  [UserProfileController::class, "user_profile_view"])->name('user.profile.view');

@@ -27,51 +27,39 @@
     <div class="content-header">
         <div class="container-fluid">
             <div class="row">
-                <form class="ajax-form" method="post" action="{{ route('question.add') }}">
+                <form class="ajax-form" method="post" action="{{ route('question.update' , $single_question->id ) }}">
                     @csrf
                     <div class="row">
 
                         <!-- name -->
                         <div class="col-md-12 col-12 form-group">
                             <label for="question">Question</label>
-                            <input type="text" class="form-control" name="question" >
+                            <input type="text" class="form-control" name="question" value="{{ $single_question->question }}">
                         </div>
 
                         <div class="col-md-12 col-12 form-group">
                             <label for="option_one">Option One</label>
-                            <input type="text" class="form-control" id="A" name="option_one" >
+                            <input type="text" class="form-control" name="option_one"  value="{{ $single_question->option_one }}">
                         </div>
 
                         <div class="col-md-12 col-12 form-group">
                             <label for="option_two">Option Two</label>
-                            <input type="text" class="form-control" id="B" name="option_two" >
+                            <input type="text" class="form-control" name="option_two"  value="{{ $single_question->option_two }}">
                         </div>
 
                         <div class="col-md-12 col-12 form-group">
                             <label for="option_three">Option Three</label>
-                            <input type="text" class="form-control" id="C" name="option_three" >
+                            <input type="text" class="form-control" name="option_three"  value="{{ $single_question->option_three }}">
                         </div>
 
                         <div class="col-md-12 col-12 form-group">
                             <label for="option_four">Option Four</label>
-                            <input type="text" class="form-control" id="D" name="option_four" >
-                        </div>
-
-                        <div class="col-md-12 col-12 form-group">
-                            <label>Answers</label>
-                            <select class="form-control " name="answers">
-                                
-                                <option value="A" >A</option>
-                                <option value="B" >B</option>
-                                <option value="C" >C</option>
-                                <option value="D" >D</option>
-                                
-                            </select>
+                            <input type="text" class="form-control" name="option_four"  value="{{ $single_question->option_four }}">
                         </div>
             
                         <div class="col-md-12 form-group text-right">
                             <button type="submit" class="btn btn-outline-dark">
-                                Add
+                                Update
                             </button>
                         </div>
             
@@ -96,4 +84,35 @@
 
 <script src="{{  asset('backend/js/ajax_form_submit.js') }}"></script>
 
+
+<script>
+    $(function () {
+        $('.question-datatable').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: "{{ route('question.data') }}",
+            order: [
+                [0, 'Desc']
+            ],
+            columns: [{
+                    data: 'id',
+                    name: 'id'
+                },
+                {
+                    data: 'name',
+                    name: 'name'
+                },
+                {
+                    data: 'is_active',
+                    name: 'is_active'
+                },
+                {
+                    data: 'action',
+                    name: 'action',
+                    orderable: false,
+                },
+            ]
+        });
+    });
+</script>
 @endsection
