@@ -45,8 +45,6 @@ class UserProfileController extends Controller
                 $test = new UserTest();                
                 $test->user_id  = $user_id;
                 $test->question_id = $question_id;
-                $test->answer_id  = $request['answer_id'][$key];
-                $test->save();
             }
             return back()->with('success','Exam Submitted Successfully...');
         }
