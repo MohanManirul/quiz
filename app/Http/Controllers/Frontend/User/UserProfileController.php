@@ -42,9 +42,7 @@ class UserProfileController extends Controller
         if( $request['question_id'] ){
             foreach( $request['question_id'] as $key => $question_id ){
 
-                $test = new UserTest();                
-                $test->user_id  = $user_id;
-                $test->question_id = $question_id;
+                $test = new UserTest(); 
             }
             return back()->with('success','Exam Submitted Successfully...');
         }
