@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserProfileSeeder::class,
             SuperAdminSeeder::class,
+            DistrictSeeder::class,
         ]);
     }
 }
