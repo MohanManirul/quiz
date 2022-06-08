@@ -95,8 +95,10 @@
                             <div class="form-group">
                                 <label class="form-label">Your District</label>
                                 <select name="district_id">
-                                    @foreach($all_district as  $district)
-                                    <option  value="{{ $district->id }}">{{ $district->name }}</option> 
+                                    <option value="">Select Your District</option>
+
+                                    @foreach($all_district as  $district)                                    
+                                    <option  value="{{ $district->id }}">{{ $district->name }} ({{ $district->bn_name }})</option> 
                                     @endforeach
                                     
                                 </select>

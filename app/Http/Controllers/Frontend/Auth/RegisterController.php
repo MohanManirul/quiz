@@ -21,7 +21,7 @@ class RegisterController extends Controller
        return redirect()->route('user.dashboard');
    }
    else{
-       $all_district = District::select('id','name')->get();
+       $all_district = District::select('id','name','bn_name')->get();
        return view("frontend.auth.register" , compact('all_district') );
    }
    
