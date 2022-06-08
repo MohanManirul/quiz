@@ -2,6 +2,7 @@
 
 namespace App\Models\UserModule;
 
+use App\Models\District;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -11,6 +12,12 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
+    //User has One district relation
+    public function user_district(){
+       return $this->belongsTo(District::class ,"district_id","id");
+    }
+
 
     /**
      * The attributes that are mass assignable.

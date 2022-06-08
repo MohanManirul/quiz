@@ -15,48 +15,18 @@
 
   <!-- [ content ] Start -->
   <div class="container-fluid flex-grow-1 container-p-y">
-    <h4 class="font-weight-bold py-3 mb-0">Exams</h4>
     <div class="text-muted small mt-0 mb-4 d-block breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#"><i class="feather icon-home"></i></a></li>
-            <li class="breadcrumb-item ">Dashboard</li>
-            <li class="breadcrumb-item active">Exams</li>
+            <li class="breadcrumb-item">Dashboard</li>
         </ol>
     </div>
     <div class="row">
-        <!-- Staustic card 4 Start -->
-        <div class="col-xl-3 col-md-12">
-            <div class="card mb-4 ui-proj mb-4">
-                <div class="card-body">
-                    <h3>Exam 1</h3>
-                </div>
-            </div>
-        </div>
         
     </div>
     <div class="row">
         <div class="col-md-12">
-            <form action="{{ route('user.exam') }}">
-                @foreach ($all_questions as $key =>  $all_question)
-                <label>
-                    <input type="checkbox" class="module_check" name="question_id[]"
-                        value="{{ $all_question->id }}" />
-                    <span>Question {{ $key+1 }} .{{ $all_question->question }}</span>
-                </label>
-
-                <ul class="list">
-                    <li><input type="checkbox" name="answer_id[]" value="A"> {{ $all_question->option_one }}</li>               
-                    <li><input type="checkbox" name="answer_id[]" value="B"> {{ $all_question->option_two }}</li>               
-                    <li><input type="checkbox" name="answer_id[]" value="C"> {{ $all_question->option_three }}</li>               
-                    <li><input type="checkbox" name="answer_id[]" value="D"> {{ $all_question->option_four }}</li>               
-                </ul>
-                @endforeach
-                <div class="col-md-12 form-group text-left">
-                    <button type="submit" class="btn btn-outline-dark">
-                        Submit
-                    </button>
-                </div>
-            </form>         
+                 
         </div>
     </div>
 

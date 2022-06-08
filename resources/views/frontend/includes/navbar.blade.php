@@ -32,6 +32,7 @@
                 <input type="text" class="form-control navbar-text mx-2" placeholder="Search...">
             </span>
         </label>
+        <h4>Home District : {{ auth()->user()->user_district->name }}</h4>
     </div>
 
     <div class="navbar-nav align-items-lg-center ml-auto">

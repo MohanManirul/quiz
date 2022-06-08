@@ -93,6 +93,16 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="form-group">
+                                <label class="form-label">Your District</label>
+                                <select name="district_id">
+                                    @foreach($all_district as  $district)
+                                    <option  value="{{ $district->id }}">{{ $district->name }}</option> 
+                                    @endforeach
+                                    
+                                </select>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group">
                                 <label class="form-label">Your email</label>
                                 <input type="email" class="form-control"  name="email">
                                 <div class="clearfix"></div>

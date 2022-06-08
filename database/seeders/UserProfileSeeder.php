@@ -20,6 +20,7 @@ class UserProfileSeeder extends Seeder
             [
                 "id"  => 1,
                 "name"  => "Demo User",
+                "district_id"  => 1,
                 "email"  => "user@gmail.com",
                 "phone"  => 1915985336,
                 "image"  => "user.png",

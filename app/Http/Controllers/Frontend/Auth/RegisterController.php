@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
 use App\Providers\RouteServiceProvider;
 use App\Models\UserModule\User;
 use Exception;
@@ -20,7 +21,8 @@ class RegisterController extends Controller
        return redirect()->route('user.dashboard');
    }
    else{
-       return view("frontend.auth.register");
+       $all_district = District::select('id','name')->get();
+       return view("frontend.auth.register" , compact('all_district') );
    }
    
 }
@@ -31,6 +33,7 @@ class RegisterController extends Controller
      
       $validator  = Validator::make($request->all(),[
          'name' =>  'required',
+         'district_id' =>  'required',
          'email' =>  'required|unique:users,email',
          'password' => 'required|min:8',
       ]);
@@ -41,6 +44,7 @@ class RegisterController extends Controller
          try{
             $user  =  new User();
             $user->name  = $request->name;
+            $user->district_id  = $request->district_id;
             $user->email  = $request->email;
             $user->password  = Hash::make($request->password);
             

@@ -22,11 +22,8 @@ class UserProfileController extends Controller
     public function index(){
         if(auth('web')->check()){  
 
-            $all_questions = Question::select('id',  'option_four')->get();
-        
-
-            $user_info = User::select('id',  'name',  'email' , 'phone'  ,  'image', 'company_name', 'language',  'address' ,'security' ,  'twitter','facebook','google_plus','linkedin', 'instagram' )->where('is_active',true)->first();
-            return view('frontend.dashboard' ,  compact('user_info', 'all_questions'));
+            $user_info = User::select('id', 'district_id', 'name',  'email' , 'phone'  ,  'image', 'company_name', 'language',  'address' ,'security' ,  'twitter','facebook','google_plus','linkedin', 'instagram' )->with('user_district')->where('is_active',true)->first();
+            return view('frontend.dashboard' ,  compact('user_info'));
         }else{
             return  view('errors.404');
         }
