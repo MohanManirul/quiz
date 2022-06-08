@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\Auth\ForgetPasswordController;
 use App\Http\Controllers\Backend\Auth\LoginController;
 use App\Http\Controllers\Backend\Auth\LogoutController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DistrictController;
 use App\Http\Controllers\Backend\QuestionController;
 
 /*
@@ -33,7 +34,14 @@ Route::get('/do-logout', [LogoutController::class, 'do_logout'])->name('do.logou
 //backend route group start
 
 Route::group(['middleware' => 'super_admin'], function () {
+    //dashboard route
     Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    //all district route 
+    Route::get('/admin/all-district', [DistrictController::class, 'index'])->name('all.district');
+    
+    //data route
+    Route::get("/all-district/data",[DistrictController::class,"data"])->name("districts.data");
     
     //index route start
     Route::get('/admin/all-question', [QuestionController::class, 'all_question'])->name('question.all');
