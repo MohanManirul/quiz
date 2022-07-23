@@ -38,8 +38,6 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(true);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
-
-            $table->foreign("district_id")->references("id")->on("districts")->onDelete("cascade");
             $table->timestamps();
         });
     }
